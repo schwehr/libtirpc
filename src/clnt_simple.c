@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Copyright (c) 1986-1991 by Sun Microsystems Inc. 
+ * Copyright (c) 1986-1991 by Sun Microsystems Inc.
  */
 
 
@@ -165,7 +165,7 @@ rpc_call(host, prognum, versnum, procnum, inproc, in, outproc, out, nettype)
 	} /* else reuse old client */
 	tottimeout.tv_sec = 25;
 	tottimeout.tv_usec = 0;
-	
+
 	/* LINTED const castaway */
 	clnt_stat = CLNT_CALL(rcp->client, procnum, inproc, (char *) in,
 	    outproc, out, tottimeout);

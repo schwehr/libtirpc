@@ -139,7 +139,7 @@ done:
  * Looks up longhand in a cache.
  */
 /*ARGSUSED*/
-enum auth_stat 
+enum auth_stat
 _svcauth_short(rqst, msg)
 	struct svc_req *rqst;
 	struct rpc_msg *msg;

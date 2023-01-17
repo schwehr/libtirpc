@@ -755,7 +755,7 @@ svc_getreq_common (fd)
        * If so, then break.
        */
       rwlock_rdlock (&svc_fd_lock);
-      
+
       if (xprt != __svc_xports[fd])
 	{
 	  rwlock_unlock (&svc_fd_lock);

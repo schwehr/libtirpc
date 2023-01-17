@@ -137,7 +137,7 @@ rtime(addrp, timep, timeout)
 	}
 	if (res != sizeof(thetime)) {
 		errno = EIO;
-		return(-1);	
+		return(-1);
 	}
 	thetime = ntohl(thetime);
 	timep->tv_sec = thetime - TOFFSET;

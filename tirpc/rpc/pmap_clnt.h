@@ -27,7 +27,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- *	from: @(#)pmap_clnt.h 1.11 88/02/08 SMI 
+ *	from: @(#)pmap_clnt.h 1.11 88/02/08 SMI
  *	from: @(#)pmap_clnt.h	2.1 88/07/29 4.0 RPCSRC
  * $FreeBSD: src/include/rpc/pmap_clnt.h,v 1.14 2002/04/28 15:18:45 des Exp $
  */

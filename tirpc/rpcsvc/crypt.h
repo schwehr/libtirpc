@@ -26,13 +26,13 @@ enum des_dir {
 	DECRYPT_DES = 1,
 };
 typedef enum des_dir des_dir;
-#ifdef __cplusplus 
+#ifdef __cplusplus
 extern "C" bool_t xdr_des_dir(XDR *, des_dir*);
-#elif __STDC__ 
+#elif __STDC__
 extern  bool_t xdr_des_dir(XDR *, des_dir*);
-#else /* Old Style C */ 
+#else /* Old Style C */
 bool_t xdr_des_dir();
-#endif /* Old Style C */ 
+#endif /* Old Style C */
 
 
 enum des_mode {
@@ -40,13 +40,13 @@ enum des_mode {
 	ECB_DES = 1,
 };
 typedef enum des_mode des_mode;
-#ifdef __cplusplus 
+#ifdef __cplusplus
 extern "C" bool_t xdr_des_mode(XDR *, des_mode*);
-#elif __STDC__ 
+#elif __STDC__
 extern  bool_t xdr_des_mode(XDR *, des_mode*);
-#else /* Old Style C */ 
+#else /* Old Style C */
 bool_t xdr_des_mode();
-#endif /* Old Style C */ 
+#endif /* Old Style C */
 
 
 struct desargs {
@@ -60,13 +60,13 @@ struct desargs {
 	} desbuf;
 };
 typedef struct desargs desargs;
-#ifdef __cplusplus 
+#ifdef __cplusplus
 extern "C" bool_t xdr_desargs(XDR *, desargs*);
-#elif __STDC__ 
+#elif __STDC__
 extern  bool_t xdr_desargs(XDR *, desargs*);
-#else /* Old Style C */ 
+#else /* Old Style C */
 bool_t xdr_desargs();
-#endif /* Old Style C */ 
+#endif /* Old Style C */
 
 
 struct desresp {
@@ -78,13 +78,13 @@ struct desresp {
 	int stat;
 };
 typedef struct desresp desresp;
-#ifdef __cplusplus 
+#ifdef __cplusplus
 extern "C" bool_t xdr_desresp(XDR *, desresp*);
-#elif __STDC__ 
+#elif __STDC__
 extern  bool_t xdr_desresp(XDR *, desresp*);
-#else /* Old Style C */ 
+#else /* Old Style C */
 bool_t xdr_desresp();
-#endif /* Old Style C */ 
+#endif /* Old Style C */
 
 
 #define CRYPT_PROG ((u_int32_t)600100029)
@@ -100,10 +100,10 @@ extern "C" desresp * des_crypt_1_svc(desargs *, struct svc_req *);
 extern  desresp * des_crypt_1(desargs *, CLIENT *);
 extern  desresp * des_crypt_1_svc(desargs *, struct svc_req *);
 
-#else /* Old Style C */ 
+#else /* Old Style C */
 #define DES_CRYPT ((u_int32_t)1)
 extern  desresp * des_crypt_1();
 extern  desresp * des_crypt_1_svc();
-#endif /* Old Style C */ 
+#endif /* Old Style C */
 
 #endif /* !_CRYPT_H_RPCGEN */

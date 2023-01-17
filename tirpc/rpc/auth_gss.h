@@ -1,9 +1,9 @@
 /*
   auth_gss.h
-  
+
   Copyright (c) 2000 The Regents of the University of Michigan.
   All rights reserved.
-  
+
   Copyright (c) 2000 Dug Song <dugsong@UMICH.EDU>.
   All rights reserved, all wrongs reversed.
 

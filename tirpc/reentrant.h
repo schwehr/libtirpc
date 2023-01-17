@@ -28,12 +28,12 @@
  *
  */
 
-/* 
- * This file was derived from a copy in FreeBSD CVS on August 26, 2010. 
+/*
+ * This file was derived from a copy in FreeBSD CVS on August 26, 2010.
  * FreeBSD/NetBSD have slightly different definitions for some/most of
  * these functions and types, so they should just use the ones found
  * in their system copy of reentrant.h.
- * These definitions are only guaranteed to be valid on Linux. 
+ * These definitions are only guaranteed to be valid on Linux.
  */
 
 #if defined(__linux__)

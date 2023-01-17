@@ -238,7 +238,7 @@ svc_tli_create(fd, nconf, bindaddr, sendsz, recvsz)
 			}
 			listen(fd, (int)bindaddr->qlen);
 		}
-			
+
 	}
 	/*
 	 * call transport specific function.

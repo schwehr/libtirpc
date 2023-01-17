@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Copyright (c) 1986-1991 by Sun Microsystems Inc. 
+ * Copyright (c) 1986-1991 by Sun Microsystems Inc.
  */
 
 /*
@@ -266,7 +266,7 @@ clnt_dg_create(fd, svcaddr, program, version, sendsz, recvsz)
 	cl->cl_auth = authnone_create();
 	cl->cl_tp = NULL;
 	cl->cl_netid = NULL;
-	
+
 	return (cl);
 err1:
 	warnx(mem_err_clnt_dg);
@@ -432,7 +432,7 @@ get_reply:
 	  char *cbuf = (char *) mem_alloc((outlen + 256));
 	  int ret;
 
-	  if (cbuf == NULL) 
+	  if (cbuf == NULL)
 	  {
 	  	cu->cu_error.re_errno = errno;
 		return (cu->cu_error.re_status = RPC_CANTRECV);

@@ -121,7 +121,7 @@ getpublicandprivatekey(key, ret)
 			lookup = NULL;
 			err = yp_match(domain, PKMAP, key, strlen(key), &lookup, &len);
 			if (err) {
-				LIBTIRPC_DEBUG(1, 
+				LIBTIRPC_DEBUG(1,
 					("getpublicandprivatekey: match failed error %d\n", err));
 				continue;
 			}
@@ -131,7 +131,7 @@ getpublicandprivatekey(key, ret)
 			free(lookup);
 			return (2);
 #else /* YP */
-			LIBTIRPC_DEBUG(1, 
+			LIBTIRPC_DEBUG(1,
 ("Bad record in %s '+' -- NIS not supported in this library copy\n", PKFILE));
 			continue;
 #endif /* YP */

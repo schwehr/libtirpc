@@ -29,7 +29,7 @@
 /*
  * Copyright (c) 1989 by Sun Microsystems, Inc.
  */
- 
+
 #include <pthread.h>
 #include <reentrant.h>
 #include <stdio.h>

@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Copyright (c) 1986-1991 by Sun Microsystems Inc. 
+ * Copyright (c) 1986-1991 by Sun Microsystems Inc.
  */
 
 
@@ -39,7 +39,7 @@
  * decryptsessionkey(agent, deskey) - decrypt ditto
  * gendeskey(deskey) - generate a secure des key
  */
- 
+
 #include <pthread.h>
 #include <reentrant.h>
 #include <stdio.h>

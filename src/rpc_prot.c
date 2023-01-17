@@ -93,7 +93,7 @@ xdr_des_block(xdrs, blkp)
  */
 bool_t
 xdr_accepted_reply(xdrs, ar)
-	XDR *xdrs;   
+	XDR *xdrs;
 	struct accepted_reply *ar;
 {
 
@@ -127,7 +127,7 @@ xdr_accepted_reply(xdrs, ar)
 /*
  * XDR the MSG_DENIED part of a reply message union
  */
-bool_t 
+bool_t
 xdr_rejected_reply(xdrs, rr)
 	XDR *xdrs;
 	struct rejected_reply *rr;
@@ -170,7 +170,7 @@ xdr_replymsg(xdrs, rmsg)
 	assert(rmsg != NULL);
 
 	if (
-	    xdr_u_int32_t(xdrs, &(rmsg->rm_xid)) && 
+	    xdr_u_int32_t(xdrs, &(rmsg->rm_xid)) &&
 	    xdr_enum(xdrs, (enum_t *)&(rmsg->rm_direction)) &&
 	    (rmsg->rm_direction == REPLY) )
 		return (xdr_union(xdrs, (enum_t *)&(rmsg->rm_reply.rp_stat),
@@ -249,7 +249,7 @@ accepted(acpt_stat, error)
 	error->re_lb.s2 = (int32_t)acpt_stat;
 }
 
-static void 
+static void
 rejected(rjct_stat, error)
 	enum reject_stat rjct_stat;
 	struct rpc_err *error;

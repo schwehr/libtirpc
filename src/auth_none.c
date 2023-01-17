@@ -164,9 +164,9 @@ authnone_ops()
 {
 	static struct auth_ops ops;
 	extern mutex_t ops_lock;
- 
+
 /* VARIABLES PROTECTED BY ops_lock: ops */
- 
+
 	mutex_lock(&ops_lock);
 	if (ops.ah_nextverf == NULL) {
 		ops.ah_nextverf = authnone_verf;

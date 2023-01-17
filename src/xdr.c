@@ -71,7 +71,7 @@ xdr_free(proc, objp)
 	void *objp;
 {
 	XDR x;
-	
+
 	x.x_op = XDR_FREE;
 	(*proc)(&x, objp);
 }
@@ -834,8 +834,8 @@ xdr_string(xdrs, cpp, maxsize)
 	return (FALSE);
 }
 
-/* 
- * Wrapper for xdr_string that can be called directly from 
+/*
+ * Wrapper for xdr_string that can be called directly from
  * routines like clnt_call
  */
 bool_t

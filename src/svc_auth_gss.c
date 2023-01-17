@@ -146,7 +146,7 @@ svcauth_gss_set_svc_name(gss_name_t name)
 		maj_stat = gss_release_name(&min_stat, &_svcauth_gss_name);
 
 		if (maj_stat != GSS_S_COMPLETE) {
-			gss_log_status("svcauth_gss_set_svc_name: gss_release_name", 
+			gss_log_status("svcauth_gss_set_svc_name: gss_release_name",
 				maj_stat, min_stat);
 			return (FALSE);
 		}
@@ -155,7 +155,7 @@ svcauth_gss_set_svc_name(gss_name_t name)
 	maj_stat = gss_duplicate_name(&min_stat, name, &_svcauth_gss_name);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("svcauth_gss_set_svc_name: gss_duplicate_name", 
+		gss_log_status("svcauth_gss_set_svc_name: gss_duplicate_name",
 			maj_stat, min_stat);
 		return (FALSE);
 	}
@@ -180,7 +180,7 @@ svcauth_gss_import_name(char *service)
 				   (gss_OID)GSS_C_NT_HOSTBASED_SERVICE, &name);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("svcauth_gss_import_name: gss_import_name", 
+		gss_log_status("svcauth_gss_import_name: gss_import_name",
 			maj_stat, min_stat);
 		return (FALSE);
 	}
@@ -202,7 +202,7 @@ svcauth_gss_acquire_cred(void)
 				    &_svcauth_gss_creds, NULL, NULL);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("svcauth_gss_acquire_cred: gss_acquire_cred", 
+		gss_log_status("svcauth_gss_acquire_cred: gss_acquire_cred",
 			maj_stat, min_stat);
 		return (FALSE);
 	}
@@ -219,7 +219,7 @@ svcauth_gss_release_cred(void)
 	maj_stat = gss_release_cred(&min_stat, &_svcauth_gss_creds);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("svcauth_gss_release_cred: gss_release_cred", 
+		gss_log_status("svcauth_gss_release_cred: gss_release_cred",
 			maj_stat, min_stat);
 		return (FALSE);
 	}
@@ -338,7 +338,7 @@ svcauth_gss_accept_sec_context(struct svc_req *rqst,
 		maj_stat = gss_display_name(&min_stat, gd->client_name,
 					    &gd->cname, &gd->sec.mech);
 		if (maj_stat != GSS_S_COMPLETE) {
-			gss_log_status("svcauth_gss_accept_sec_context: display_name", 
+			gss_log_status("svcauth_gss_accept_sec_context: display_name",
 				maj_stat, min_stat);
 			return (FALSE);
 		}
@@ -382,7 +382,7 @@ svcauth_gss_validate(struct svc_rpc_gss_data *gd, struct rpc_msg *msg,
 	if (oa->oa_length > MAX_AUTH_BYTES)
 		return (FALSE);
 
-	rpchdr = (u_char *)calloc(((8 * BYTES_PER_XDR_UNIT) + 
+	rpchdr = (u_char *)calloc(((8 * BYTES_PER_XDR_UNIT) +
 			RNDUP(oa->oa_length)), 1);
 	if (rpchdr == NULL)
 		return (FALSE);
@@ -412,7 +412,7 @@ svcauth_gss_validate(struct svc_rpc_gss_data *gd, struct rpc_msg *msg,
 	free(rpchdr);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("svcauth_gss_validate: gss_verify_mic", 
+		gss_log_status("svcauth_gss_validate: gss_verify_mic",
 			maj_stat, min_stat);
 		return (FALSE);
 	}
@@ -438,7 +438,7 @@ svcauth_gss_nextverf(struct svc_req *rqst, u_int num)
 			       &signbuf, &checksum);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("svcauth_gss_nextverf: gss_get_mic", 
+		gss_log_status("svcauth_gss_nextverf: gss_get_mic",
 			maj_stat, min_stat);
 		return (FALSE);
 	}
@@ -709,7 +709,7 @@ _svcauth_gss(struct svc_req *rqst, struct rpc_msg *msg, bool_t *no_dispatch)
 
 		*no_dispatch = TRUE;
 
-		call_stat = svc_sendreply(rqst->rq_xprt, 
+		call_stat = svc_sendreply(rqst->rq_xprt,
 			(xdrproc_t)xdr_rpc_gss_init_res, (caddr_t)&gr);
 
 		gss_release_buffer(&min_stat, &gr.gr_token);

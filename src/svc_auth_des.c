@@ -157,7 +157,7 @@ _svcauth_des(rqst, msg)
 		cred->adc_nickname = (u_long)*ixdr++;
 		break;
 	default:
-		return (AUTH_BADCRED);	
+		return (AUTH_BADCRED);
 	}
 
 	/*
@@ -188,7 +188,7 @@ _svcauth_des(rqst, msg)
 			LIBTIRPC_DEBUG(1, ("_svcauth_des: key_decryptsessionkey failed"));
 			return (AUTH_BADCRED); /* key not found */
 		}
-	} else { /* ADN_NICKNAME */	
+	} else { /* ADN_NICKNAME */
 		sid = (short)cred->adc_nickname;
 		if (sid < 0 || sid >= AUTHDES_CACHESZ) {
 			LIBTIRPC_DEBUG(1, ("_svcauth_des: bad nickname"));
@@ -201,13 +201,13 @@ _svcauth_des(rqst, msg)
 	/*
 	 * Decrypt the timestamp
 	 */
-	cryptbuf[0] = verf.adv_xtimestamp; 
+	cryptbuf[0] = verf.adv_xtimestamp;
 	if (cred->adc_namekind == ADN_FULLNAME) {
 		cryptbuf[1].key.high = cred->adc_fullname.window;
 		cryptbuf[1].key.low = verf.adv_winverf;
-		ivec.key.high = ivec.key.low = 0;	
+		ivec.key.high = ivec.key.low = 0;
 		status = cbc_crypt((char *)sessionkey, (char *)cryptbuf,
-			2*sizeof(des_block), DES_DECRYPT | DES_HW, 
+			2*sizeof(des_block), DES_DECRYPT | DES_HW,
 			(char *)&ivec);
 	} else {
 		status = ecb_crypt((char *)sessionkey, (char *)cryptbuf,
@@ -243,7 +243,7 @@ _svcauth_des(rqst, msg)
 				LIBTIRPC_DEBUG(1, ("_svcauth_des: window verifier mismatch"));
 				return (AUTH_BADCRED);	/* garbled credential */
 			}
-			sid = cache_spot(sessionkey, cred->adc_fullname.name, 
+			sid = cache_spot(sessionkey, cred->adc_fullname.name,
 			    &timestamp);
 			if (sid < 0) {
 				LIBTIRPC_DEBUG(1, ("_svcauth_des: replayed credential"));
@@ -260,7 +260,7 @@ _svcauth_des(rqst, msg)
 			/* cached out (bad key), or garbled verifier */
 			return (nick ? AUTH_REJECTEDVERF : AUTH_BADVERF);
 		}
-		if (nick && BEFORE(&timestamp, 
+		if (nick && BEFORE(&timestamp,
 				   &authdes_cache[sid].laststamp)) {
 			LIBTIRPC_DEBUG(1, ("_svcauth_des: timestamp before last seen"));
 			return (AUTH_REJECTEDVERF);	/* replay */
@@ -286,7 +286,7 @@ _svcauth_des(rqst, msg)
 	IXDR_PUT_LONG(ixdr, timestamp.tv_sec - 1);
 	IXDR_PUT_LONG(ixdr, timestamp.tv_usec);
 
-	/*	 
+	/*
 	 * encrypt the timestamp
 	 */
 	status = ecb_crypt((char *)sessionkey, (char *)cryptbuf,
@@ -307,7 +307,7 @@ _svcauth_des(rqst, msg)
 
 	rqst->rq_xprt->xp_verf.oa_flavor = AUTH_DES;
 	rqst->rq_xprt->xp_verf.oa_base = msg->rm_call.cb_verf.oa_base;
-	rqst->rq_xprt->xp_verf.oa_length = 
+	rqst->rq_xprt->xp_verf.oa_length =
 		(char *)ixdr - msg->rm_call.cb_verf.oa_base;
 
 	/*
@@ -336,7 +336,7 @@ _svcauth_des(rqst, msg)
 	} else { /* ADN_NICKNAME */
 		/*
 		 * nicknames are cooked into fullnames
-		 */	
+		 */
 		cred->adc_namekind = ADN_FULLNAME;
 		cred->adc_fullname.name = entry->rname;
 		cred->adc_fullname.key = entry->key;
@@ -355,7 +355,7 @@ cache_init()
 	int i;
 
 	authdes_cache = (struct cache_entry *)
-		mem_alloc(sizeof(struct cache_entry) * AUTHDES_CACHESZ);	
+		mem_alloc(sizeof(struct cache_entry) * AUTHDES_CACHESZ);
 	memset(authdes_cache, 0,
 		sizeof(struct cache_entry) * AUTHDES_CACHESZ);
 
@@ -416,7 +416,7 @@ cache_spot(key, name, timestamp)
 
 	hi = key->key.high;
 	for (cp = authdes_cache, i = 0; i < AUTHDES_CACHESZ; i++, cp++) {
-		if (cp->key.key.high == hi && 
+		if (cp->key.key.high == hi &&
 		    cp->key.key.low == key->key.low &&
 		    cp->rname != NULL &&
 		    memcmp(cp->rname, name, strlen(name) + 1) == 0) {
@@ -464,7 +464,7 @@ authdes_getucred(adc, uid, gid, grouplen, groups)
 {
 	unsigned sid;
 	int i;
-	uid_t i_uid;	
+	uid_t i_uid;
 	gid_t i_gid;
 	int i_grouplen;
 	struct bsdcred *cred;
@@ -484,7 +484,7 @@ authdes_getucred(adc, uid, gid, grouplen, groups)
 		/*
 		 * not in cache: lookup
 		 */
-		if (!netname2user(adc->adc_fullname.name, &i_uid, &i_gid, 
+		if (!netname2user(adc->adc_fullname.name, &i_uid, &i_gid,
 			&i_grouplen, groups))
 		{
 			LIBTIRPC_DEBUG(1, ("authdes_getucred: unknown netname"));
@@ -502,7 +502,7 @@ authdes_getucred(adc, uid, gid, grouplen, groups)
 	} else if (cred->grouplen == UNKNOWN) {
 		/*
 		 * Already lookup up, but no match found
-		 */	
+		 */
 		return (0);
 	}
 

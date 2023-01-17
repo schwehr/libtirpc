@@ -221,7 +221,7 @@ extern pthread_mutex_t	rpcbaddr_cache_lock;
 
 static struct address_cache *
 copy_of_cached(host, netid)
-	const char *host; 
+	const char *host;
 	char *netid;
 {
 	struct address_cache *cptr, *copy = NULL;
@@ -230,7 +230,7 @@ copy_of_cached(host, netid)
 	for (cptr = front; cptr != NULL; cptr = cptr->ac_next) {
 		if (!strcmp(cptr->ac_host, host) &&
 		    !strcmp(cptr->ac_netid, netid)) {
-			LIBTIRPC_DEBUG(3, ("check_cache: Found cache entry for %s: %s\n", 
+			LIBTIRPC_DEBUG(3, ("check_cache: Found cache entry for %s: %s\n",
 				host, netid));
 			copy = copy_addr(cptr);
 			break;
@@ -419,7 +419,7 @@ getclnthandle(host, nconf, targaddr)
 	if (nconf->nc_protofmly != NULL && strcmp(nconf->nc_protofmly, NC_LOOPBACK) == 0) {
 		client = local_rpcb();
 		if (! client) {
-			LIBTIRPC_DEBUG(1, ("getclnthandle: %s", 
+			LIBTIRPC_DEBUG(1, ("getclnthandle: %s",
 				clnt_spcreateerror("local_rpcb failed")));
 			goto out_err;
 		} else {
@@ -449,7 +449,7 @@ getclnthandle(host, nconf, targaddr)
 			int i;
 
 			ua = taddr2uaddr(nconf, &taddr);
-			fprintf(stderr, "Got it [%s]\n", ua); 
+			fprintf(stderr, "Got it [%s]\n", ua);
 			free(ua);
 
 			fprintf(stderr, "\tnetbuf len = %d, maxlen = %d\n",
@@ -463,7 +463,7 @@ getclnthandle(host, nconf, targaddr)
 		client = clnt_tli_create(RPC_ANYFD, nconf, &taddr,
 		    (rpcprog_t)RPCBPROG, (rpcvers_t)RPCBVERS4, 0, 0);
 		if (! client) {
-			LIBTIRPC_DEBUG(1, ("getclnthandle: %s", 
+			LIBTIRPC_DEBUG(1, ("getclnthandle: %s",
 				clnt_spcreateerror("clnt_tli_create failed")));
 		}
 
@@ -748,7 +748,7 @@ got_entry(relp, nconf)
 		    (nconf->nc_semantics == rmap->r_nc_semantics) &&
 		    (rmap->r_maddr != NULL) && (rmap->r_maddr[0] != 0)) {
 			na = uaddr2taddr(nconf, rmap->r_maddr);
-			LIBTIRPC_DEBUG(3, ("got_entry: Remote address is [%s] %s", 
+			LIBTIRPC_DEBUG(3, ("got_entry: Remote address is [%s] %s",
 				rmap->r_maddr, (na ? "Resolvable" : "Not Resolvable")));
 			break;
 		}
@@ -1002,7 +1002,7 @@ rpcbind:
 				goto error;
 			}
 			address = uaddr2taddr(nconf, ua);
-			LIBTIRPC_DEBUG(3, ("__rpcb_findaddr_timed: Remote address is [%s] %s", 
+			LIBTIRPC_DEBUG(3, ("__rpcb_findaddr_timed: Remote address is [%s] %s",
 				ua, (address ? "Resolvable" : "Not Resolvable")));
 
 			xdr_free((xdrproc_t)xdr_wrapstring,

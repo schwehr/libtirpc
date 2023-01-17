@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Copyright (c) 1986-1991 by Sun Microsystems Inc. 
+ * Copyright (c) 1986-1991 by Sun Microsystems Inc.
  */
 
 
@@ -591,7 +591,7 @@ struct netbuf *
 uaddr2taddr(const struct netconfig *nconf, const char *uaddr)
 {
 	struct __rpc_sockinfo si;
-	
+
 	if (!__rpc_nconf2sockinfo(nconf, &si))
 		return NULL;
 	return __rpc_uaddr2taddr_af(si.si_af, uaddr);
@@ -702,7 +702,7 @@ __rpc_uaddr2taddr_af(int af, const char *uaddr)
 	ret = (struct netbuf *)malloc(sizeof *ret);
 	if (ret == NULL)
 		goto out;
-	
+
 	switch (af) {
 	case AF_INET:
 		sin = (struct sockaddr_in *)malloc(sizeof *sin);
@@ -841,16 +841,16 @@ __rpc_sockisbound(int fd)
 
 	switch (ss.ss_family) {
 		case AF_INET:
-			memcpy(&u_addr.sin, &ss, sizeof(u_addr.sin)); 
+			memcpy(&u_addr.sin, &ss, sizeof(u_addr.sin));
 			return (u_addr.sin.sin_port != 0);
 #ifdef INET6
 		case AF_INET6:
-			memcpy(&u_addr.sin6, &ss, sizeof(u_addr.sin6)); 
+			memcpy(&u_addr.sin6, &ss, sizeof(u_addr.sin6));
 			return (u_addr.sin6.sin6_port != 0);
 #endif
 		case AF_LOCAL:
 			/* XXX check this */
-			memcpy(&u_addr.usin, &ss, sizeof(u_addr.usin)); 
+			memcpy(&u_addr.usin, &ss, sizeof(u_addr.usin));
 			return (u_addr.usin.sun_path[0] != 0);
 		default:
 			break;

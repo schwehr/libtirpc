@@ -11,14 +11,14 @@ by almost 70 vendors on all major operating systems.  TS-RPC source code
 (RPCSRC 4.0) remains available from several internet sites.
 
 This release was a native source release, compatible for
-building on Solaris 2.3. It had been ported from FreeBSD 5.2.1 to GNU/Linux 
+building on Solaris 2.3. It had been ported from FreeBSD 5.2.1 to GNU/Linux
 in 2004.
 
 Applications linked with this release's librpc must link with the United
 States domestic version of libcrypt in order to resolve the cbc_crypt() and
 ecb_crypt() functions.  These routines are used with Secure RPC however all
 RPC programs that link with this release's librpc will need to link with the
-domestic libcrypt.  
+domestic libcrypt.
 
 WHAT'S NEW IN THIS RELEASE: TIRPCSRC 2.3 FROM SUN
 

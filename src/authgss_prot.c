@@ -179,7 +179,7 @@ xdr_rpc_gss_wrap_data(XDR *xdrs, xdrproc_t xdr_func, caddr_t xdr_ptr,
 		maj_stat = gss_get_mic(&min_stat, ctx, qop,
 				       &databuf, &wrapbuf);
 		if (maj_stat != GSS_S_COMPLETE) {
-			gss_log_status("xdr_rpc_gss_wrap_data: gss_get_mic", 
+			gss_log_status("xdr_rpc_gss_wrap_data: gss_get_mic",
 				maj_stat, min_stat);
 			return (FALSE);
 		}
@@ -194,7 +194,7 @@ xdr_rpc_gss_wrap_data(XDR *xdrs, xdrproc_t xdr_func, caddr_t xdr_ptr,
 		maj_stat = gss_wrap(&min_stat, ctx, TRUE, qop, &databuf,
 				    &conf_state, &wrapbuf);
 		if (maj_stat != GSS_S_COMPLETE) {
-			gss_log_status("xdr_rpc_gss_wrap_data: gss_wrap", 
+			gss_log_status("xdr_rpc_gss_wrap_data: gss_wrap",
 				maj_stat, min_stat);
 			return (FALSE);
 		}
@@ -244,7 +244,7 @@ xdr_rpc_gss_unwrap_data(XDR *xdrs, xdrproc_t xdr_func, caddr_t xdr_ptr,
 
 		if (maj_stat != GSS_S_COMPLETE || qop_state != qop) {
 			gss_release_buffer(&min_stat, &databuf);
-			gss_log_status("xdr_rpc_gss_unwrap_data: gss_verify_mic", 
+			gss_log_status("xdr_rpc_gss_unwrap_data: gss_verify_mic",
 				maj_stat, min_stat);
 			return (FALSE);
 		}
@@ -265,7 +265,7 @@ xdr_rpc_gss_unwrap_data(XDR *xdrs, xdrproc_t xdr_func, caddr_t xdr_ptr,
 		if (maj_stat != GSS_S_COMPLETE || qop_state != qop ||
 			conf_state != TRUE) {
 			gss_release_buffer(&min_stat, &databuf);
-			gss_log_status("xdr_rpc_gss_unwrap_data: gss_unwrap", 
+			gss_log_status("xdr_rpc_gss_unwrap_data: gss_unwrap",
 				maj_stat, min_stat);
 			return (FALSE);
 		}
@@ -279,7 +279,7 @@ xdr_rpc_gss_unwrap_data(XDR *xdrs, xdrproc_t xdr_func, caddr_t xdr_ptr,
 
 	/* Verify sequence number. */
 	if (xdr_stat == TRUE && seq_num != seq) {
-		LIBTIRPC_DEBUG(1, 
+		LIBTIRPC_DEBUG(1,
 			("xdr_rpc_gss_unwrap_data: wrong sequence number in databody"));
 		return (FALSE);
 	}

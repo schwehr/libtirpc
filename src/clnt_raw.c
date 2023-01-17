@@ -110,7 +110,7 @@ clnt_raw_create(prog, vers)
 	/* XXX: prog and vers have been long historically :-( */
 	call_msg.rm_call.cb_prog = (u_int32_t)prog;
 	call_msg.rm_call.cb_vers = (u_int32_t)vers;
-	xdrmem_create(xdrs, clp->u.mashl_callmsg, MCALL_MSG_SIZE, XDR_ENCODE); 
+	xdrmem_create(xdrs, clp->u.mashl_callmsg, MCALL_MSG_SIZE, XDR_ENCODE);
 	if (! xdr_callhdr(xdrs, &call_msg))
 		warnx("clntraw_create - Fatal header serialization error.");
 	clp->mcnt = XDR_GETPOS(xdrs);
@@ -131,7 +131,7 @@ clnt_raw_create(prog, vers)
 }
 
 /* ARGSUSED */
-static enum clnt_stat 
+static enum clnt_stat
 clnt_raw_call(h, proc, xargs, argsp, xresults, resultsp, timeout)
 	CLIENT *h;
 	rpcproc_t proc;

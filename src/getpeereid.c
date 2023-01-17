@@ -39,7 +39,7 @@ getpeereid(int s, uid_t *euid, gid_t *egid)
 	socklen_t uclen;
 	int error;
 
-	uclen = sizeof(uc); 
+	uclen = sizeof(uc);
 	error = getsockopt(s, SOL_SOCKET, SO_PEERCRED, &uc, &uclen); /*  SCM_CREDENTIALS */
 	if (error != 0)
 		return (error);

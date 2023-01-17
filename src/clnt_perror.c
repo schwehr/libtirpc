@@ -109,7 +109,7 @@ clnt_sperror(rpch, s)
 
 	case RPC_CANTSEND:
 	case RPC_CANTRECV:
-		snprintf(str, len, "; errno = %s", strerror(e.re_errno)); 
+		snprintf(str, len, "; errno = %s", strerror(e.re_errno));
 		i = strlen(str);
 		if (i > 0) {
 			str += i;
@@ -118,7 +118,7 @@ clnt_sperror(rpch, s)
 		break;
 
 	case RPC_VERSMISMATCH:
-		snprintf(str, len, "; low version = %u, high version = %u", 
+		snprintf(str, len, "; low version = %u, high version = %u",
 			e.re_vers.low, e.re_vers.high);
 		i = strlen(str);
 		if (i > 0) {
@@ -150,7 +150,7 @@ clnt_sperror(rpch, s)
 		break;
 
 	case RPC_PROGVERSMISMATCH:
-		snprintf(str, len, "; low version = %u, high version = %u", 
+		snprintf(str, len, "; low version = %u, high version = %u",
 			e.re_vers.low, e.re_vers.high);
 		i = strlen(str);
 		if (i > 0) {
@@ -160,7 +160,7 @@ clnt_sperror(rpch, s)
 		break;
 
 	default:	/* unknown */
-		snprintf(str, len, "; s1 = %u, s2 = %u", 
+		snprintf(str, len, "; s1 = %u, s2 = %u",
 			e.re_lb.s1, e.re_lb.s2);
 		i = strlen(str);
 		if (i > 0) {
@@ -261,9 +261,9 @@ clnt_spcreateerror(s)
 		case RPC_CANTRECV:
 			i = strlen(str);
 			len -= i;
-			snprintf(str+i, len, ": errno %d (%s)", 
+			snprintf(str+i, len, ": errno %d (%s)",
 				rpc_createerr.cf_error.re_errno,
-				strerror(rpc_createerr.cf_error.re_errno)); 
+				strerror(rpc_createerr.cf_error.re_errno));
 			break;
 		default:
 			break;

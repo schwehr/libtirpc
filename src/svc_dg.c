@@ -619,7 +619,7 @@ cache_get(xprt, msg, replyp, replylenp)
 					uaddr = taddr2uaddr(nconf, &xprt->xp_rtaddr);
 					freenetconfigent(nconf);
 					LIBTIRPC_DEBUG(4,
-						("cache entry found for xid=%x prog=%d" 
+						("cache entry found for xid=%x prog=%d"
 						"vers=%d proc=%d for rmtaddr=%s\n",
 						su->su_xid, msg->rm_call.cb_prog,
 						msg->rm_call.cb_vers,
@@ -692,7 +692,7 @@ svc_dg_valid_pktinfo(struct msghdr *msg)
 			return 0;
 		} else {
 			struct in_pktinfo *pkti;
-			
+
 			pkti = (struct in_pktinfo *) CMSG_DATA (cmsg);
 			pkti->ipi_ifindex = 0;
 		}
@@ -706,7 +706,7 @@ svc_dg_valid_pktinfo(struct msghdr *msg)
 			return 0;
 		} else {
 			struct in6_pktinfo *pkti;
-			
+
 			pkti = (struct in6_pktinfo *) CMSG_DATA (cmsg);
 			pkti->ipi6_ifindex = 0;
 		}

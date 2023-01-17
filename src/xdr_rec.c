@@ -41,7 +41,7 @@
  * by n bytes of data, where n is contained in the header.  The header
  * is represented as a htonl(u_long).  Thegh order bit encodes
  * whether or not the fragment is the last fragment of the record
- * (1 => fragment is last, 0 => more fragments to follow. 
+ * (1 => fragment is last, 0 => more fragments to follow.
  * The other 31 bits encode the byte length of the fragment.
  */
 
@@ -166,8 +166,8 @@ xdrrec_create(xdrs, sendsize, recvsize, tcp_handle, readit, writeit)
 
 	if (rstrm == NULL) {
 		warnx("xdrrec_create: out of memory");
-		/* 
-		 *  This is bad.  Should rework xdrrec_create to 
+		/*
+		 *  This is bad.  Should rework xdrrec_create to
 		 *  return a handle, and in this case return NULL
 		 */
 		return;
@@ -288,7 +288,7 @@ xdrrec_getbytes(xdrs, addr, len)
 		current = (len < current) ? len : current;
 		if (! get_input_bytes(rstrm, addr, current))
 			return (FALSE);
-		addr += current; 
+		addr += current;
 		rstrm->fbtbc -= current;
 		len -= current;
 	}
@@ -637,11 +637,11 @@ flush_out(rstrm, eor)
 	bool_t eor;
 {
 	u_int32_t eormask = (eor == TRUE) ? LAST_FRAG : 0;
-	u_int32_t len = (u_int32_t)((u_long)(rstrm->out_finger) - 
+	u_int32_t len = (u_int32_t)((u_long)(rstrm->out_finger) -
 		(u_long)(rstrm->frag_header) - sizeof(u_int32_t));
 
 	*(rstrm->frag_header) = htonl(len | eormask);
-	len = (u_int32_t)((u_long)(rstrm->out_finger) - 
+	len = (u_int32_t)((u_long)(rstrm->out_finger) -
 	    (u_long)(rstrm->out_base));
 	if ((*(rstrm->writeit))(rstrm->tcp_handle, rstrm->out_base, (int)len)
 		!= (int)len)
@@ -741,7 +741,7 @@ skip_input_bytes(rstrm, cnt)
 	u_int32_t current;
 
 	while (cnt > 0) {
-		current = (size_t)((long)rstrm->in_boundry - 
+		current = (size_t)((long)rstrm->in_boundry -
 		    (long)rstrm->in_finger);
 		if (current == 0) {
 			if (! fill_input_buf(rstrm))

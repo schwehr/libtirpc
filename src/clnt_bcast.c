@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Copyright (c) 1986-1991 by Sun Microsystems Inc. 
+ * Copyright (c) 1986-1991 by Sun Microsystems Inc.
  */
 
 /*
@@ -223,7 +223,7 @@ __rpc_broadenable(int af, int s, struct broadif *bip)
 }
 
 /*
- * Some rpcbind implementations use an IPv6 socket to serve both 
+ * Some rpcbind implementations use an IPv6 socket to serve both
  * IPv4 and IPv6 messages, but neglect to check for the caller's
  * address family when sending broadcast replies. These rpcbind
  * implementations return an IPv6 address in reply to an IPv4
@@ -345,7 +345,7 @@ rpc_broadcast_exp(prog, vers, proc, xargs, argsp, xresults, resultsp,
 			continue;
 
 		TAILQ_INIT(&fdlist[fdlistno].nal);
-		if (__rpc_getbroadifs(si.si_af, si.si_proto, si.si_socktype, 
+		if (__rpc_getbroadifs(si.si_af, si.si_proto, si.si_socktype,
 		    &fdlist[fdlistno].nal) == 0)
 			continue;
 
@@ -487,7 +487,7 @@ rpc_broadcast_exp(prog, vers, proc, xargs, argsp, xresults, resultsp,
 					    outlen, 0, (struct sockaddr*)addr,
 					    (size_t)fdlist[i].asize) !=
 					    outlen) {
-						LIBTIRPC_DEBUG(1, 
+						LIBTIRPC_DEBUG(1,
 							("rpc_broadcast_exp: sendto failed: errno %d", errno));
 						warnx("rpc_broadcast_exp: cannot send broadcast packet");
 						stat = RPC_CANTSEND;
@@ -557,7 +557,7 @@ rpc_broadcast_exp(prog, vers, proc, xargs, argsp, xresults, resultsp,
 				continue;
 			} else
 				fds_found++;
-			LIBTIRPC_DEBUG(3, ("rpc_broadcast_exp: response for %s\n", 
+			LIBTIRPC_DEBUG(3, ("rpc_broadcast_exp: response for %s\n",
 				fdlist[i].nconf->nc_netid));
 		try_again:
 			inlen = recvfrom(fdlist[i].fd, inbuf, fdlist[i].dsize,
@@ -609,10 +609,10 @@ rpc_broadcast_exp(prog, vers, proc, xargs, argsp, xresults, resultsp,
 					struct sockaddr_in sin;
 
 					if (pmap_flag && pmap_reply_flag) {
-						memcpy(&sin, &fdlist[i].raddr, sizeof(sin)); 
+						memcpy(&sin, &fdlist[i].raddr, sizeof(sin));
 						sin.sin_port = htons((u_short)port);
-						memcpy(&fdlist[i].raddr, &sin, sizeof(sin)); 
-						taddr.len = taddr.maxlen = 
+						memcpy(&fdlist[i].raddr, &sin, sizeof(sin));
+						taddr.len = taddr.maxlen =
 						    sizeof(fdlist[i].raddr);
 						taddr.buf = &fdlist[i].raddr;
 						done = (*eachresult)(resultsp,

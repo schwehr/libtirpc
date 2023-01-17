@@ -127,7 +127,7 @@ struct t_bind {
  * not use.
  */
 struct __rpc_sockinfo {
-	int si_af; 
+	int si_af;
 	int si_proto;
 	int si_socktype;
 	int si_alen;

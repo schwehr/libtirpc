@@ -29,7 +29,7 @@
 
 
 /*
- * svc_vc.c, Server side for Connection Oriented based RPC. 
+ * svc_vc.c, Server side for Connection Oriented based RPC.
  *
  * Actually implements two flavors of transporter -
  * a tcp rendezvouser (a listner and connection establisher)
@@ -410,7 +410,7 @@ svc_vc_destroy(xprt)
 	SVCXPRT *xprt;
 {
 	assert(xprt != NULL);
-	
+
 	xprt_unregister(xprt);
 	__svc_vc_dodestroy(xprt);
 }
@@ -583,7 +583,7 @@ write_vc(xprtp, buf, len)
 
 	if (cd->nonblock)
 		gettimeofday(&tv0, NULL);
-	
+
 	for (cnt = len; cnt > 0; cnt -= i, buf += i) {
 		i = write(xprt->xp_fd, buf, (size_t)cnt);
 		if (i  < 0) {
@@ -673,7 +673,7 @@ svc_vc_getargs(xprt, xdr_args, args_ptr)
 	if (!SVCAUTH_UNWRAP(&SVC_XP_AUTH(xprt),
 			    &(((struct cf_conn *)(xprt->xp_p1))->xdrs),
 			    xdr_args, args_ptr)) {
-		return FALSE;  
+		return FALSE;
 	}
 	return TRUE;
 }

@@ -83,5 +83,5 @@ program CRYPT_PROG {
         version CRYPT_VERS {
                 desresp
                 DES_CRYPT(desargs) = 1;
-        } = 1; 
+        } = 1;
 } = 600100029;

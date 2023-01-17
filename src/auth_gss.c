@@ -258,7 +258,7 @@ authgss_create_default(CLIENT *clnt, char *service, struct rpc_gss_sec *sec)
 		&name);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("authgss_create_default: gss_import_name", 
+		gss_log_status("authgss_create_default: gss_import_name",
 			maj_stat, min_stat);
 		rpc_createerr.cf_stat = RPC_AUTHERROR;
 		return (NULL);
@@ -376,7 +376,7 @@ authgss_marshal(AUTH *auth, XDR *xdrs)
 			    &rpcbuf, &checksum);
 
 	if (maj_stat != GSS_S_COMPLETE) {
-		gss_log_status("authgss_marshal: gss_get_mic", 
+		gss_log_status("authgss_marshal: gss_get_mic",
 			maj_stat, min_stat);
 		if (maj_stat == GSS_S_CONTEXT_EXPIRED) {
 			gd->established = FALSE;
@@ -439,7 +439,7 @@ authgss_validate(AUTH *auth, struct opaque_auth *verf)
 				  &checksum, &qop_state);
 
 	if (maj_stat != GSS_S_COMPLETE || qop_state != gd->sec.qop) {
-		gss_log_status("authgss_validate: gss_verify_mic", 
+		gss_log_status("authgss_validate: gss_verify_mic",
 			maj_stat, min_stat);
 		if (maj_stat == GSS_S_CONTEXT_EXPIRED) {
 			gd->established = FALSE;
@@ -533,7 +533,7 @@ _rpc_gss_refresh(AUTH *auth, rpc_gss_options_ret_t *options_ret)
 					LIBTIRPC_DEBUG(1, ("authgss_refresh: %s errno: %s",
 						clnt_sperrno(call_stat), strerror(err.re_errno)));
 				} else
-					gss_log_status("authgss_refresh:", 
+					gss_log_status("authgss_refresh:",
 						gr.gr_major, gr.gr_minor);
 				return FALSE;
 			}
@@ -571,7 +571,7 @@ _rpc_gss_refresh(AUTH *auth, rpc_gss_options_ret_t *options_ret)
 
 			if (maj_stat != GSS_S_COMPLETE
 					|| qop_state != gd->sec.qop) {
-				gss_log_status("authgss_refresh: gss_verify_mic", 
+				gss_log_status("authgss_refresh: gss_verify_mic",
 					maj_stat, min_stat);
 				if (maj_stat == GSS_S_CONTEXT_EXPIRED) {
 					gd->established = FALSE;
@@ -667,7 +667,7 @@ authgss_destroy_context(AUTH *auth)
 			gd->gc.gc_proc = RPCSEC_GSS_DESTROY;
 			clnt_call(gd->clnt, NULLPROC, (xdrproc_t)xdr_void, NULL,
 				  (xdrproc_t)xdr_void, NULL, AUTH_TIMEOUT);
-			
+
 			if (save_auth != NULL)
 				gd->clnt->cl_auth = save_auth;
 		}

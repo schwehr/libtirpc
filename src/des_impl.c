@@ -389,7 +389,7 @@ des_set_key (unsigned char *key, unsigned long *schedule)
   c2l (in, c);
   c2l (in, d);
 
-  /* I now do it in 47 simple operations 
+  /* I now do it in 47 simple operations
    * Thanks to John Fletcher (john_fletcher@lccmail.ocf.llnl.gov)
    * for the inspiration.  */
   PERM_OP (d, c, t, 4, 0x0f0f0f0f);

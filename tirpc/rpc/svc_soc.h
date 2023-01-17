@@ -51,7 +51,7 @@
  *  Approved way of getting address of caller
  */
 #define svc_getcaller(x) (&(x)->xp_raddr)
-/* Getting address of a caller using netbuf xp_rtaddr */ 
+/* Getting address of a caller using netbuf xp_rtaddr */
 #define svc_getcaller_netbuf(x) (&(x)->xp_rtaddr)
 /*
  * Service registration
@@ -61,7 +61,7 @@
  *	u_long prog;
  *	u_long vers;
  *	void (*dispatch)();
- *	int protocol;    like TCP or UDP, zero means do not register 
+ *	int protocol;    like TCP or UDP, zero means do not register
  */
 #ifdef __cplusplus
 extern "C" {

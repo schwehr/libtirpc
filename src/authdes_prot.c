@@ -72,7 +72,7 @@ xdr_authdes_cred(xdrs, cred)
 bool_t
 xdr_authdes_verf(xdrs, verf)
 	XDR *xdrs;
-	struct authdes_verf *verf;	
+	struct authdes_verf *verf;
 {
 	/*
  	 * Unrolled xdr
